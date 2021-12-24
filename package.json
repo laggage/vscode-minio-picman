@@ -10,14 +10,63 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:vscode-minio-picman.helloWorld"
+        "onCommand:vscode-minio-picman.upload-local-disk-image"
     ],
     "main": "./dist/extension.js",
     "contributes": {
         "commands": [
             {
-                "command": "vscode-minio-picman.helloWorld",
-                "title": "Hello World"
+                "command": "vscode-minio-picman.upload-local-disk-image",
+                "title": "Upload image from local disk to minio",
+                "category": "vscode-minio-picman"
+            }
+        ],
+        "configuration": [
+            {
+                "title": "vscode-minio-picman",
+                "properties": {
+                    "vscode-minio-picman.minioServerAddress": {
+                        "default": "",
+                        "type": "string",
+                        "title": "Minio server host",
+                        "markdownDescription": "e.g. `https://s3.amazonaws.com`",
+                        "pattern": "https?://",
+                        "order": 0
+                    },
+                    "vscode-minio-picman.minioAccessKey": {
+                        "default": "",
+                        "type": "string",
+                        "title": "Minio access key",
+                        "order": 1
+                    },
+                    "vscode-minio-picman.minioSecretKey": {
+                        "default": "",
+                        "type": "string",
+                        "title": "Minio secret key",
+                        "order": 2
+                    },
+                    "vscode-minio-picman.minioBucketName": {
+                        "default": "TheImagesBed",
+                        "type": "string",
+                        "title": "Minio bucket name",
+                        "description": "A bucket which images will uploaded to",
+                        "order": 3
+                    },
+                    "vscode-minio-picman.subdirectoryInMinioBucket": {
+                        "default": "images/vscode-minio-picman",
+                        "type": "string",
+                        "title": "",
+                        "markdownDescription": "Subdirectory in the specific bucket to save images.\n\n  e.g. `images/20211225`",
+                        "pattern": "^[^/].*[^/]$"
+                    }
+                }
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "vscode-minio-picman.upload-local-disk-image",
+                "mac": "cmd+shift+z",
+                "win": "ctrl+shift+z"
             }
         ]
     },
@@ -35,6 +84,8 @@
     },
     "devDependencies": {
         "@types/glob": "^7.1.4",
+        "@types/mime-types": "^2.1.1",
+        "@types/minio": "^7.0.11",
         "@types/mocha": "^9.0.0",
         "@types/node": "14.x",
         "@types/vscode": "^1.63.0",
@@ -49,5 +100,12 @@
         "typescript": "^4.4.4",
         "webpack": "^5.52.1",
         "webpack-cli": "^4.8.0"
+    },
+    "dependencies": {
+        "date-fns": "^2.27.0",
+        "form-data": "^4.0.0",
+        "mime-types": "^2.1.34",
+        "minio": "^7.0.25",
+        "node-fetch": "^3.0.0"
     }
 }
