@@ -79,7 +79,21 @@
                 "mac": "cmd+shift+x",
                 "win": "ctrl+shift+x"
             }
-        ]
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "command": "vscode-minio-picman.upload-local-disk-image",
+                    "when": "resourceLangId == markdown",
+                    "group": "vscode-minio-picman"
+                },
+                {
+                    "command": "vscode-minio-picman.upload-clipboard-image",
+                    "when": "resourceLangId == markdown",
+                    "group": "vscode-minio-picman"
+                }
+            ]
+        }
     },
     "scripts": {
         "vscode:prepublish": "npm run package",
