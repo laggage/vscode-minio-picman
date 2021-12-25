@@ -30,9 +30,10 @@ export class ImageUploadService {
             // eslint-disable-next-line @typescript-eslint/naming-convention
             'Content-Type': mime.contentType(fileExt),
         });
-        return `${minioClientOption.useSSL ? 'https' : 'http'}://${
-            minioClientOption.endPoint
-        }/${bucketName}${filePath}`;
+        return `${minioClientOption.useSSL ? 'https' : 'http'}://${minioClientOption.endPoint}/${bucketName}${filePath
+            .split('/')
+            .map(x => encodeURI(x))
+            .join('/')}`;
     }
 }
 
