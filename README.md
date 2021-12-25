@@ -2,6 +2,10 @@
 
 一个minio图床插件, 通过快捷键, 在vscode中快速上传剪贴板或本地文件图片到自己的minio server
 
+## 动图演示
+
+![image](https://minio.mytechsky.top/blog/images/2021122523540483-2021-12-25%2023.49.24.gif)
+
 ## 使用说明
 
 使用前需要在插件设置中配置好minio的服务器地址和访问密钥
