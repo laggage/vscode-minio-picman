@@ -15,7 +15,7 @@ export const handleImageUploaded = async (imageLink: string) => {
             } as MessageOptions,
             ...copyOptions
         );
-        let textToCopy = imageLink;
+        let textToCopy = '';
         switch (selected) {
             case copyOptions[0]:
                 textToCopy = formatImageLink(imageLink, 'markdown');
@@ -23,7 +23,12 @@ export const handleImageUploaded = async (imageLink: string) => {
             case copyOptions[1]:
                 textToCopy = formatImageLink(imageLink, 'html');
                 break;
+            case copyOptions[2]:
+                textToCopy = imageLink;
+                break;
         }
-        await env.clipboard.writeText(textToCopy);
+        if (textToCopy) {
+            await env.clipboard.writeText(textToCopy);
+        }
     }
 };
