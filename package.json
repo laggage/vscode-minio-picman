@@ -2,9 +2,9 @@
     "name": "vscode-minio-picman",
     "displayName": "vscode-minio-picman",
     "description": "A vscode extension aimed at making upload image to minio a easy thing",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "publisher": "laggage",
-    "preview": true,
+    "preview": false,
     "engines": {
         "vscode": "^1.63.0"
     },
