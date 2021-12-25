@@ -25,7 +25,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: echo "VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+    - run: echo "VERSION=${GITHUB_REF#refs/*/}" | sed 's/v//' >> $GITHUB_ENV
     - run: echo "version:\ ${{ env.VERSION }}"
     - run: npm i -g vsce
     - run: sed -i 's/\"version\":\ \"[0-9]\.[0-9]\.[0-9]\"/\"version\":\ \"${{ env.VERSION }}\"/' package.json
