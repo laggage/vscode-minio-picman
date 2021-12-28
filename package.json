@@ -15,7 +15,9 @@
         "vscode": "^1.63.0"
     },
     "repository": {
-        "github": "https://github.com/laggage/vscode-minio-picman"
+        "type": "github",
+        "url": "https://github.com",
+        "directory": "/laggage/vscode-minio-picman"
     },
     "categories": [
         "Other"
