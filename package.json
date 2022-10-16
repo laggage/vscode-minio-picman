@@ -24,7 +24,9 @@
     ],
     "activationEvents": [
         "onCommand:vscode-minio-picman.upload-local-disk-image",
-        "onCommand:vscode-minio-picman.upload-clipboard-image"
+        "onCommand:vscode-minio-picman.upload-clipboard-image",
+        "onCommand:workbench.action.openSettings",
+        "workspaceContains:**settings.json"
     ],
     "main": "./dist/extension.js",
     "contributes": {
@@ -44,39 +46,39 @@
             {
                 "title": "vscode-minio-picman",
                 "properties": {
-                    "vscode-minio-picman.minioServerAddress": {
+                    "vscode-minio-picman.minioPicman.server.address": {
                         "default": "",
                         "type": "string",
-                        "title": "Minio server host",
-                        "markdownDescription": "e.g. `https://s3.amazonaws.com`",
-                        "pattern": "https?://",
+                        "markdownDescription": "e.g. `https://s3.amazonaws.com` `http://my-minio.xyz:5900`",
+                        "pattern": "(^https?://)|(^$)",
                         "order": 0
                     },
-                    "vscode-minio-picman.minioAccessKey": {
+                    "vscode-minio-picman.minioPicman.credential.accessKey": {
                         "default": "",
                         "type": "string",
-                        "title": "Minio access key",
+                        "markdownDescription": "Access key is like user ID that uniquely identifies your minio account.",
                         "order": 1
                     },
-                    "vscode-minio-picman.minioSecretKey": {
+                    "vscode-minio-picman.minioPicman.credential.secretKey": {
                         "default": "",
                         "type": "string",
-                        "title": "Minio secret key",
+                        "markdownDescription": "Secret key is the password to your minio account.",
                         "order": 2
                     },
-                    "vscode-minio-picman.minioBucketName": {
+                    "vscode-minio-picman.minioPicman.upload.bucketName": {
                         "default": "TheImagesBed",
                         "type": "string",
                         "title": "Minio bucket name",
                         "description": "A bucket which images will uploaded to",
                         "order": 3
                     },
-                    "vscode-minio-picman.subdirectoryInMinioBucket": {
+                    "vscode-minio-picman.minioPicman.upload.directory": {
                         "default": "images/vscode-minio-picman",
                         "type": "string",
                         "title": "",
                         "markdownDescription": "Subdirectory in the specific bucket to save images.\n\n  e.g. `images/20211225`",
-                        "pattern": "^[^/].*[^/]$"
+                        "pattern": "^[^/].*[^/]$",
+                        "order": 4
                     }
                 }
             }
