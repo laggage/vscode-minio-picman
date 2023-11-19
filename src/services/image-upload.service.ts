@@ -30,7 +30,8 @@ export class ImageUploadService {
             // eslint-disable-next-line @typescript-eslint/naming-convention
             'Content-Type': mime.contentType(fileExt),
         });
-        return `${minioClientOption.useSSL ? 'https' : 'http'}://${minioClientOption.endPoint}/${bucketName}${filePath
+        const { port, endPoint } = minioClientOption;
+        return `${minioClientOption.useSSL ? 'https' : 'http'}://${endPoint}${ port == null || port === 80 || port === 443 ? '' : port }/${bucketName}${filePath
             .split('/')
             .map(x => encodeURI(x))
             .join('/')}`;
