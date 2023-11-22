@@ -31,7 +31,7 @@ export class ImageUploadService {
             'Content-Type': mime.contentType(fileExt),
         });
         const { port, endPoint } = minioClientOption;
-        return `${minioClientOption.useSSL ? 'https' : 'http'}://${endPoint}${ port == null || port === 80 || port === 443 ? '' : port }/${bucketName}${filePath
+        return `${minioClientOption.useSSL ? 'https' : 'http'}://${endPoint}${ port == null || port === 80 || port === 443 ? '' : ':' + port }/${bucketName}${filePath
             .split('/')
             .map(x => encodeURI(x))
             .join('/')}`;
