@@ -8,7 +8,7 @@ export const uploadLocalDiskImage = async () => {
     const fileUri = ((await window.showOpenDialog({
         title: 'Select image',
         filters: {
-            image: ['png', 'jpg', 'bpm', 'jpeg', 'webp', 'svg'],
+            image: ['png', 'jpg', 'bpm', 'jpeg', 'webp', 'svg', 'gif'],
         },
         canSelectMany: false,
     })) ?? [])[0];
